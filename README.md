@@ -1,4 +1,4 @@
-ZF2 OpenShop
+ZF2 OpenStore
 =======================
 
 Introdução
