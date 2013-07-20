@@ -1,7 +1,7 @@
 web1:
   name: zf2openstore
   document_root: public
-  php_version: 5.4
+  php_version: 5.4.14
   php_extensions:
     - pdo_mysql
     - curl
