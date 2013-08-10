@@ -14,14 +14,27 @@ use Zend\View\Model\ViewModel;
 
 class ProdutoController extends AbstractActionController
 {
+    protected $produtoTable;
+    
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(array(
+            'produtos' => $this->getProdutoTable()->fetchAll(),
+        ));
     }
 
     public function editarAction()
     {
         return new ViewModel();
+    }
+    
+    public function getProdutoTable()
+    {
+        if (!$this->produtoTable) {
+            $sm = $this->getServiceLocator();
+            $this->produtoTable = $sm->get('Produto\Model\ProdutoTable');
+        }
+        return $this->produtoTable;
     }
 
 
