@@ -45,6 +45,8 @@ class ProdutoController extends AbstractActionController
 
     	$request = $this->getRequest();
 
+		$produto = new Produto();    	
+
     	if ($request->isPost()) {
     		$produto = new Produto();    		
     		$form->setData($request->getPost());
