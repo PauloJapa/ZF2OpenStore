@@ -1,1 +1,32 @@
-Index Produto
+<h3>Produtos</h3>
+
+<table class="table">
+
+    <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>Criação</th>
+        <th>Modificado</th>
+        <th>Ativo</th>
+        <th>Ações</th>
+    </tr>
+    
+    <?php foreach($this->produtos as $produto){ ?>
+    
+        <tr>
+            <td><?php echo $produto->getId(); ?></td>
+            <td><?php echo $produto->getNome(); ?></td>
+            <td><?php echo $produto->getValor(); ?></td>
+            <td><?php echo date('d/m/Y', strtotime($produto->getCreateAt())); ?></td>
+            <td><?php echo date('d/m/Y', strtotime($produto->getModifyAt())); ?></td>
+            <td><?php echo ($produto->getAtivo() == 1) ? 'Ativo' : 'Inativo'; ?></td>
+            <td>
+                <a class="btn" href="<?php echo $this->url('produto/default', array('controller' => 'produto', 'action' => 'editar', 'id' => $produto->getId())); ?>"><i class="icon-edit"></i>Editar</a>
+                <a class="btn" href="<?php echo $this->url('produto/default', array('controller' => 'produto', 'action' => 'delete', 'id' => $produto->getId())); ?>"><i class="icon-remove"></i>Excluir</a>
+            </td>
+        </tr>
+    
+    <?php } ?>
+    
+</table>
