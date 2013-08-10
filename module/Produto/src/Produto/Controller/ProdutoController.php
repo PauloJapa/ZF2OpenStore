@@ -11,6 +11,8 @@ namespace Produto\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Produto\Form\ProdutoForm;
+use Produto\Model\Produto;
 
 class ProdutoController extends AbstractActionController
 {
@@ -37,5 +39,28 @@ class ProdutoController extends AbstractActionController
         return $this->produtoTable;
     }
 
+    public function addAction() {
 
+    	$form = new ProdutoForm();
+
+    	$request = $this->getRequest();
+
+    	if ($request->isPost()) {
+    		$produto = new Produto();    		
+    		$form->setData($request->getPost());
+			
+			if ($form->isValid()) {
+				$produto->exchangeArray($form->getData());
+				$this->getProdutoTable()->save($produto);
+
+				return $this->redirect()->toRoute('produto', array('controller' => 'produto'));
+			}    		
+    	}
+
+    	return new ViewModel(array('form' => $form));
+
+    }
 }
+
+
+
