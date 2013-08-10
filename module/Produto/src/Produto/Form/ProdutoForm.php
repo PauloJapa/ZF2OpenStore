@@ -11,7 +11,7 @@ class ProdutoForm extends Form{
 	public function __constructor($name = null) {
 		//nome, descrição, valor
 
-		parent::__construct('produto');
+		parent::__construct('produto', array());
 
 
 		$this->setInputFilter(new ProdutoFilter());

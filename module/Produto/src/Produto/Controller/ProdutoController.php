@@ -12,6 +12,7 @@ namespace Produto\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Produto\Form\ProdutoForm;
+use Produto\Model\Produto;
 
 class ProdutoController extends AbstractActionController
 {
@@ -45,7 +46,7 @@ class ProdutoController extends AbstractActionController
     	$request = $this->getRequest();
 
     	if ($request->isPost()) {
-    		$produto = new Produto();
+    		$produto = new Produto();    		
     		$form->setData($request->getPost());
 			
 			if ($form->isValid()) {
