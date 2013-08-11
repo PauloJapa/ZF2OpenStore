@@ -38,7 +38,7 @@ class ProdutoController extends AbstractActionController
         endif;
 
         try{
-            $produto = $this->getProdutoTable()->findBy($id);    
+            $produto = $this->getProdutoTable()->findBy($id);
         }catch(\Exception $ex){
             return $this->redirect()->toRoute('produto', array(
                 'controller' => 'produto', 'action' => 'index'

@@ -1,0 +1,9 @@
+ZF2OpenStore
+=======================
+
+CHANGELOG (NOTABLE NEW FEATURES OR FIXES)
+---------
+
+#### 0.1.0
+* Common: Criação do modelo e CRUD de `Produto`
+	 
