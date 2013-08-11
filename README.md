@@ -4,6 +4,7 @@ ZF2 OpenStore
 Introdução
 ------------
 Projeto para estudo do Grupo Zenders
+https://github.com/Zenders-BR/ZF2OpenStore
 
 Instalação
 ------------

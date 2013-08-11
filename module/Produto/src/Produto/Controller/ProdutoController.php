@@ -25,8 +25,26 @@ class ProdutoController extends AbstractActionController
         ));
     }
 
-    public function editarAction()
-    {
+    public function editarAction(){
+        $this->layout()->setVariables(array(
+            'pageHeader' => 'Produtos',
+            'subPageHeader' => 'Editar produto',
+        ));
+
+        $id = (int)$this->params()->fromRoute('id', 0);
+
+        if (!$id): 
+            return $this->redirect()->toRoute('produto/default', array('controller'=>'produto', 'action'=>'index'));
+        endif;
+
+        try{
+            $produto = $this->getProdutoTable()->findBy($id);    
+        }catch(\Exception $ex){
+            return $this->redirect()->toRoute('produto', array(
+                'controller' => 'produto', 'action' => 'index'
+            ));
+        }
+
         return new ViewModel();
     }
     
@@ -34,8 +52,14 @@ class ProdutoController extends AbstractActionController
     {
         if (!$this->produtoTable) {
             $sm = $this->getServiceLocator();
-            $this->produtoTable = $sm->get('Produto\Model\ProdutoTable');
+            $this->produtoTable = $sm->get('Produto\Model\ProdutoTable');            
         }
+        
+        $this->layout()->setVariables(array(
+            'pageHeader' => 'Produtos',
+            'subPageHeader' => 'Adicionar produto',
+        ));
+
         return $this->produtoTable;
     }
 
@@ -57,7 +81,12 @@ class ProdutoController extends AbstractActionController
 			}    		
     	}
 
-    	return new ViewModel(array('form' => $form));
+        $this->layout()->setVariables(array(
+            'pageHeader' => 'Produtos',
+            'subPageHeader' => 'Adicionar produto',
+        ));
+
+    	return array('form' => $form,'pageHeader'=>'Produtos');
 
     }
 }

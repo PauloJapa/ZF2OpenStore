@@ -1,0 +1,22 @@
+/* ...................... main.css  ......................*/
+.frmProdutos{
+	float:left;
+	width: 220px;
+}
+.frmProdutos label{
+	float:left;
+}
+.frmProdutos label span{
+	float: left;
+	width: 100%;
+	min-height: 20px;
+}
+
+
+/* ........ general class ....... */
+.clearFix{
+	clear:both;
+	float: none;
+	width: 100%;
+	height: 1px;
+}

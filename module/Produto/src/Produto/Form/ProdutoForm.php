@@ -7,24 +7,31 @@ use Zend\Form\Form;
 class ProdutoForm extends Form
 {
 
-    public function __construct()
-    {
-        //nome, descrição, valor
+    public function __construct(){
 
         parent::__construct('produto', array());
 
-
         $this->setInputFilter(new ProdutoFilter());
 
-        // defini o metodo de envio do form
         $this->setAttribute('method', 'post');
+        $this->setAttribute('class','frmProdutos');
 
         $this->add(
             array(
                 'name'    => 'nome',
                 'type'    => 'Zend\Form\Element\Text',
                 'options' => array(
-                    'label' => 'Nome do produto',
+                    'label' => 'Nome',
+                ),
+            )
+        );
+        
+        $this->add(
+            array(
+                'name'    => 'valor',
+                'type'    => 'Zend\Form\Element\Text',
+                'options' => array(
+                    'label' => 'Valor R$',
                 ),
             )
         );
@@ -32,7 +39,7 @@ class ProdutoForm extends Form
         $this->add(
             array(
                 'name'    => 'descricao',
-                'type'    => 'Zend\Form\Element\Text',
+                'type'    => 'Zend\Form\Element\Textarea',
                 'options' => array(
                     'label' => 'Descricao',
                 ),
@@ -41,15 +48,53 @@ class ProdutoForm extends Form
 
         $this->add(
             array(
+                'type'  =>  'Zend\Form\Element\Radio',
+                'name'  =>  'ativo',
+                'options' => array(
+                    'label' => 'Status',
+                    'value_options' => array(
+                        '0' => 'Inativo',
+                        '1' => 'Ativo',
+                    ),
+                ),
+            )
+        );
+
+
+ // $radio = new Element\Radio('gender');
+ //     $radio->setLabel('What is your gender ?');
+ //     $radio->setValueOptions(array(
+ //             array(
+ //                     '0' => 'Female',
+ //                     '1' => 'Male',
+ //             )
+ //     ));
+
+
+
+
+
+
+
+        $this->add(
+            array(
+                'type'  => 'Zend\Form\Element\Csrf',
+                'name'  => 'security',
+            )
+        );
+
+        $this->add(
+            array(
                 'name'       => 'cadastrar',
                 'type'       => 'Zend\Form\Element\Submit',
                 'attributes' => array(
-                    'value' => 'Enviar',
+                    'value' => 'Cadastrar',
                     'class' => 'btn btn-primary',
                 ),
             )
         );
     }
+
 
 }
 

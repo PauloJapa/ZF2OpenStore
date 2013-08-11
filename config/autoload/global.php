@@ -2,7 +2,7 @@
 return array(
     'db' => array(
         'driver'         => 'Pdo',
-        'dsn'            => 'mysql:dbname=zf2openstore;host=localhost',
+        'dsn'            => 'mysql:dbname=zf2openstore;host=127.0.0.1',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
